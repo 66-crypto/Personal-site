@@ -142,7 +142,6 @@
     .case-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
     .case-tags span { padding: 7px 11px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; }
     .case-cta { margin-top: 28px; }
-    .case-placeholder { display: grid; place-items: center; text-align: center; min-height: 320px; padding: 24px; border-radius: 17px; background: rgba(215,169,255,.25); font-family: "Unbounded", sans-serif; font-size: clamp(22px, 4vw, 38px); letter-spacing: -.06em; }
     .work-card:nth-child(1), .work-card:nth-child(4) { grid-column: span 7; }
     .work-card:nth-child(2), .work-card:nth-child(5) { grid-column: span 5; }
     .work-card:nth-child(3) { grid-column: span 5; }
@@ -208,7 +207,7 @@
       .contact-layout { grid-template-columns: 1fr; }
       .contact-copy { position: static; }
       .case-layout { grid-template-columns: 1fr; }
-      .case-visual, .case-placeholder { min-height: 240px; }
+      .case-visual { min-height: 240px; }
     }
     @media (max-width: 480px) {
       :root { --page: calc(100% - 32px); --radius: 20px; }
@@ -286,7 +285,7 @@
           <p class="section-kicker">02 / избранное</p>
           <h2 class="section-title" id="works-title">Мои работы</h2>
         </div>
-        <p class="works-intro">Каждый проект — отдельный характер, задача и визуальный язык. [ЗАМЕНИТЬ] Добавьте сюда ссылки на реальные кейсы.</p>
+        <p class="works-intro">Каждый проект — отдельный характер, задача и визуальный язык.</p>
       </div>
       <div class="work-grid">
         <a class="glass work-card" href="#case-landing" data-case="landing" aria-label="Посмотреть кейс: лендинг">
@@ -312,7 +311,6 @@
       </div>
     </section>
 
-
     <section class="case-view" id="case-view" aria-labelledby="case-title" tabindex="-1">
       <a class="case-back" href="#works" id="case-back"><span aria-hidden="true">←</span> Назад к работам</a>
       <div class="case-topline">
@@ -322,17 +320,17 @@
       <h2 class="case-title" id="case-title">Название проекта</h2>
       <p class="case-intro" id="case-intro">Краткое описание проекта.</p>
       <div class="case-layout">
+        <!-- Плашка удалена, остался чистый контейнер для картинки и подписи -->
         <figure class="glass case-visual" id="case-visual">
-          <div class="case-placeholder" id="case-placeholder">Добавьте изображение кейса</div>
-          <figcaption id="case-caption">Замените изображение на скриншот проекта.</figcaption>
+          <figcaption id="case-caption">Описание проекта</figcaption>
         </figure>
         <aside class="glass case-details">
           <h3>Задача</h3>
-          <p id="case-task">Сделать гайд для абитуриентов автошколы, отвечающий на вопросы. Пожелания заказчика: крупные цифры, спокойные тона, отсутствие тревожной символики</p>
+          <p id="case-task"></p>
           <h3>Решение</h3>
-          <p id="case-solution">Выбран стиль в фиолетовых оттенках, отсылающий к автомобильным салонам (эстетика автомобилей побуждает абитуриента поскорее перейти к обучению в автошколе), цифры выполнены крупно, информация четко распределена по структуре </p>
+          <p id="case-solution"></p>
           <h3>Результат</h3>
-          <p id="case-result">Выполнен современный дизайн в стиле глассморфизм</p>
+          <p id="case-result"></p>
           <div class="case-tags" id="case-tags"></div>
           <div class="case-cta"><a class="button" href="#contacts">обсудить похожий проект</a></div>
         </aside>
@@ -345,7 +343,7 @@
       <div class="contact-layout">
         <div class="contact-copy">
           <p>Расскажите немного о задаче — я свяжусь с вами, чтобы обсудить детали и следующий шаг.</p>
-          <a class="contact-link" href="https://t.me/masha_sork">Написать напрямую ↗</a>
+          <a class="contact-link" href="https://t.me/masha_sork" target="_blank" rel="noopener">Написать напрямую ↗</a>
         </div>
         <form class="glass contact-form" id="contact-form">
           <div class="field">
@@ -383,8 +381,8 @@
     <div class="footer-inner">
       <p>© <span id="year"></span> maria.sork · Мария Сорокина</p>
       <div class="footer-links">
-        <a href="https://t.me/masha_sork">Telegram</a>
-        <a href="[ЗАМЕНИТЬ: ссылка на Behance/портфолио]">Портфолио</a>
+        <a href="https://t.me/masha_sork" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://www.behance.net" target="_blank" rel="noopener">Портфолио</a>
         <a href="privacy.html">Политика конфиденциальности</a>
       </div>
     </div>
@@ -441,13 +439,12 @@
         revealItems.forEach(item => item.classList.add('is-visible'));
       }
 
-
       // Portfolio cards open case-detail views with a preview image and project story.
       const caseData = {
         landing: {
           number: 'КЕЙС / 01', category: 'Web design', title: 'Лендинг',
           intro: 'Информационный гайд для абитуриентов автошколы',
-          image: 'Гайд для абитуриентов автошколы.png', alt: 'Превью лендинга — [Гайд для абитуриентов автошколы]',
+          image: 'Гайд для абитуриентов автошколы.png', alt: 'Превью лендинга — Гайд для абитуриентов автошколы',
           caption: 'Полный макет лендинга.',
           task: 'Создать четкую и понятную инструкцию для абитуриентов автошколы, чтобы повысить конверсию',
           solution: 'Использованы спокойные тона, гротескная типографика для создания акцентов, отсутствует тревожная символика, чтобы не напугать пользователя. Дизайн выполнен в технологичном стиле премиальных автосалонов, чтобы повысить желание пользователя скорее приступить к обучению и получить права.',
@@ -458,7 +455,7 @@
           number: 'КЕЙС / 02', category: 'Campaign design', title: 'Реклама',
           intro: 'Реклама подсвечника для соцсетей',
           image: 'рекламный креатив.png', alt: 'Превью рекламного дизайна — Рекламный креатив',
-          caption: '[ЗАМЕНИТЬ] Покажите рекламный макет, баннер или серию креативов.',
+          caption: 'Рекламный макет для соцсетей.',
           task: 'Создать рекламный креатив для Instagram/соцсетей для интернет-магазина товаров для дома.',
           solution: 'Мягкие цвета и качественная визуализация товара (с горящей свечой внутри) создают ощущение тепла. Пользователь сразу видит выгоду (скидка 50% до конца сентября) и понимает ценность товара (уют, дизайн, подарок). Кнопка «Получи скидку» с яркой стрелкой направляет взгляд вниз, побуждая к переходу на сайт',
           result: 'Трендовая реклама в "уютных" оттенках',
@@ -468,7 +465,7 @@
           number: 'КЕЙС / 03', category: 'Marketplace', title: 'Инфографика',
           intro: 'Карточка товара для маркетплейсов',
           image: 'Frame 42.png', alt: 'Превью инфографики товара — Роллер для глаз DE.CO',
-          caption: '[ЗАМЕНИТЬ] Добавьте карточку товара или несколько слайдов инфографики.',
+          caption: 'Инфографика для маркетплейса.',
           task: 'Создать инфографику для маркетплейса (Ozon/Wildberries) на косметический роллер для глаз.',
           solution: 'Выбраны необычные цвета, выделяющие товар среди конкурентов и ассоциируемые с прохладой и свежестью, "пухлый" шрифт привлекает внимание, преимущества выделены в отдельные плашки с иконками',
           result: 'Современная и визуально привлекательная инфографика',
@@ -478,7 +475,7 @@
           number: 'КЕЙС / 04', category: 'Music & culture', title: 'Афиши и музыка',
           intro: 'Афиша и билет на маскарадную вечеринку «EMPIRE»',
           image: 'афиша мероприятия.png', alt: 'Превью афиши музыкального проекта — Афиша для маскарада',
-          caption: '[ЗАМЕНИТЬ] Добавьте афишу, обложку релиза или визуальную серию.',
+          caption: 'Афиша и билет для тематической вечеринки.',
           task: 'Разработать дизайн афиши и билета для тематической вечеринки-маскарада «EMPIRE». Необходимо передать атмосферу тайны, роскоши и «красивого безумия».',
           solution: 'Розовый готический нуар создаёт необходимое впечатление, выделяясь среди конкурентов, использованы нестандартные шрифты и символика маскарада. Информация размещена строго сверху вниз для удобства чтения',
           result: 'Комплект из двухстороннего билета и афиши',
@@ -488,7 +485,7 @@
           number: 'КЕЙС / 05', category: 'Presentation design', title: 'Презентация',
           intro: 'Презентация кинопоказа «AMBER FRAMES»',
           image: 'Презентация.png', alt: 'Презентация кинопоказа «AMBER FRAMES»',
-          caption: '[ЗАМЕНИТЬ] Добавьте обложку и несколько наиболее выразительных слайдов.',
+          caption: 'Презентация для киношколы.',
           task: 'Разработать афишу для премиального показа короткометражек на осеннюю тему от киношколы «24 кадра». Необходимо передать атмосферу теплого, уютного осеннего вечера, подчеркнуть премиальность мероприятия и заинтересовать молодую аудиторию (студентов и начинающих кинематографистов). ',
           solution: 'Основной фон стилизован под крафтовую бумагу и смятую кальку, что создает ощущение ручной работы, тепла и ностальгии. Использованы тёплые, обогревающие цвета, а также гармоничное сочетание осенних и кинематографических элементов в дизайне',
           result: 'Разработана презентация, которая мотивирует посетить мероприятие и подчеркивает статус киношколы.',
@@ -502,6 +499,8 @@
       caseImage.alt = '';
       caseImage.loading = 'lazy';
       caseImage.hidden = true;
+      
+      // Добавляем картинку в контейнер (плашки больше нет, поэтому ошибки не будет)
       document.getElementById('case-visual').prepend(caseImage);
 
       function showCase(key) {
@@ -526,7 +525,9 @@
         caseImage.src = data.image;
         caseImage.alt = data.alt;
         caseImage.hidden = false;
-        document.getElementById('case-placeholder').hidden = true;
+        
+        // Строку про скрытие placeholder мы убрали, так как его больше нет
+        
         caseView.classList.add('is-active');
         portfolio.hidden = true;
         document.querySelectorAll('.section:not(#works):not(#contacts), .hero').forEach(section => section.hidden = true);
@@ -576,15 +577,51 @@
         });
       });
 
-      // Demo form: validates locally and shows confirmation without a page reload.
-      // Connect a form backend or replace this handler before collecting real enquiries.
+      // ОТПРАВКА ФОРМЫ В TELEGRAM
       const form = document.getElementById('contact-form');
       const message = document.getElementById('form-message');
+      
+      // ВАЖНО: Для работы формы нужно заменить этот токен и ID на свои.
+      // Инструкция ниже.
+      const TG_BOT_TOKEN = 'YOUR_BOT_TOKEN'; 
+      const TG_CHAT_ID = 'YOUR_CHAT_ID';
+
       form.addEventListener('submit', (event) => {
         event.preventDefault();
         if (!form.reportValidity()) return;
-        message.textContent = 'Спасибо! Форма пока работает в демо-режиме. Добавьте сервис отправки заявок, чтобы получать сообщения.';
-        form.reset();
+        
+        message.textContent = 'Отправляем...';
+        
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const service = document.getElementById('service').value;
+        
+        const text = `✨ Новая заявка с сайта!\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n💼 Услуга: ${service}`;
+        
+        const url = `https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`;
+        
+        fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            chat_id: TG_CHAT_ID,
+            text: text
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.ok) {
+            message.textContent = 'Спасибо! Заявка отправлена, я скоро свяжусь с вами.';
+            form.reset();
+          } else {
+            message.textContent = 'Ошибка отправки. Пожалуйста, напишите мне в Telegram напрямую.';
+          }
+        })
+        .catch(error => {
+          message.textContent = 'Ошибка сети. Пожалуйста, напишите мне в Telegram напрямую.';
+        });
       });
     })();
   </script>
